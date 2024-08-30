@@ -1,0 +1,19 @@
+/* styles.css */
+.text-left {
+    text-align: left;
+}
+
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-item .form-check-label {
+    margin-left: 10px;
+}
