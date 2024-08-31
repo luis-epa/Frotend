@@ -19,7 +19,7 @@ const Catalogo = () => {
 
   // Cargar juegos
   useEffect(() => {
-    fetch(`${API_BASE_URL}/verJuegos`)
+    fetch("http://localhost:3030/verJuegos")
       .then((response) => response.json())
       .then((data) => {
         console.log("Datos de juegos recibidos:", data); // Verificar los datos recibidos
@@ -30,7 +30,7 @@ const Catalogo = () => {
 
   // Cargar géneros
   useEffect(() => {
-    fetch(`${API_BASE_URL}/generos`)
+    fetch("http://localhost:3020/generos")
       .then((response) => response.json())
       .then((data) => {
         console.log("Datos de géneros recibidos:", data); // Verificar los datos recibidos
@@ -41,7 +41,7 @@ const Catalogo = () => {
 
   // Cargar desarrolladores
   useEffect(() => {
-    fetch(`${API_BASE_URL}/desarrolladores`)
+    fetch("http://localhost:3020/desarrolladores")
       .then((response) => response.json())
       .then((data) => {
         console.log("Datos de desarrolladores recibidos:", data); // Verificar los datos recibidos

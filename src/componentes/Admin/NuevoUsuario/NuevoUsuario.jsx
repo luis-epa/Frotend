@@ -6,6 +6,7 @@ import "./NuevoUsuario.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { API_BASE_URL } from "../../../config/config";
 
 function NuevoUsuarioForm() {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ function NuevoUsuarioForm() {
   useEffect(() => {
     const obtenerDatos = async () => {
       const api = axios.create({
-        baseURL: "http://localhost:3010/api/v1",
+        baseURL: `${API_BASE_URL}/api/v1`,
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -114,7 +115,7 @@ function NuevoUsuarioForm() {
   const crearUsuario = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3010/api/v1/admin/usuarios",
+        `${API_BASE_URL}/api/v1/admin/usuarios`,
         formData,
         {
           headers: {
