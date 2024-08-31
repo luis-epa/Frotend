@@ -19,7 +19,7 @@ const Catalogo = () => {
 
   // Cargar juegos
   useEffect(() => {
-    fetch("http://localhost:3030/verJuegos")
+    fetch(`${API_BASE_URL}/verJuegos`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Datos de juegos recibidos:", data); // Verificar los datos recibidos
@@ -30,7 +30,7 @@ const Catalogo = () => {
 
   // Cargar géneros
   useEffect(() => {
-    fetch("http://localhost:3020/generos")
+    fetch(`${API_BASE_URL}/generos`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Datos de géneros recibidos:", data); // Verificar los datos recibidos
@@ -41,7 +41,7 @@ const Catalogo = () => {
 
   // Cargar desarrolladores
   useEffect(() => {
-    fetch("http://localhost:3020/desarrolladores")
+    fetch(`${API_BASE_URL}/desarrolladores`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Datos de desarrolladores recibidos:", data); // Verificar los datos recibidos
@@ -72,13 +72,13 @@ const Catalogo = () => {
     setMostrarVentas(false); // No mostrar ventas en esta consulta
     if (generoSeleccionado === "") {
       // Mostrar todos los juegos si no hay género seleccionado
-      fetch("http://localhost:3030/verJuegos")
+      fetch(`${API_BASE_URL}/verJuegos`)
         .then((response) => response.json())
         .then((data) => setJuegos(Array.isArray(data) ? data : []))
         .catch((error) => console.error("Error al cargar los juegos:", error));
     } else {
       // Filtrar juegos por género seleccionado
-      fetch("http://localhost:3030/porgenero", {
+      fetch(`${API_BASE_URL}/porgenero`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ genre: generoSeleccionado }),
@@ -95,12 +95,12 @@ const Catalogo = () => {
   const filtrarJuegosPorDesarrollador = () => {
     setMostrarVentas(false); // No mostrar ventas en esta consulta
     if (desarrolladorSeleccionado === "") {
-      fetch("http://localhost:3030/verJuegos")
+      fetch(`${API_BASE_URL}/verJuegos`)
         .then((response) => response.json())
         .then((data) => setJuegos(Array.isArray(data) ? data : []))
         .catch((error) => console.error("Error al cargar los juegos:", error));
     } else {
-      fetch("http://localhost:3030/pordesarrollador", {
+      fetch(`${API_BASE_URL}/pordesarrollador`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ developer: desarrolladorSeleccionado }),
@@ -117,12 +117,12 @@ const Catalogo = () => {
   const filtrarJuegosPorClasificacion = () => {
     setMostrarVentas(false); // No mostrar ventas en esta consulta
     if (clasificacionSeleccionada === "") {
-      fetch("http://localhost:3030/verJuegos")
+      fetch(`${API_BASE_URL}/verJuegos`)
         .then((response) => response.json())
         .then((data) => setJuegos(Array.isArray(data) ? data : []))
         .catch((error) => console.error("Error al cargar los juegos:", error));
     } else {
-      fetch("http://localhost:3030/verclasificacion", {
+      fetch(`${API_BASE_URL}/verclasificacion`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ clasificacion: clasificacionSeleccionada }),
@@ -137,7 +137,7 @@ const Catalogo = () => {
 
   // Filtrar juegos por los más comprados
   const filtrarJuegosMasComprados = () => {
-    fetch("http://localhost:3030/mascomprados")
+    fetch(`${API_BASE_URL}/mascomprados`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Juegos más comprados:", data); // Verificar los datos recibidos
